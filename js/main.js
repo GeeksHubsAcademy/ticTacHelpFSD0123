@@ -35,11 +35,19 @@ tablero.map(
             //Ejemplo de inyección de HTML desde JavaScript
             // celda.innerHTML = `<p class='devil'>NUNCA LO ACABARAS</p>`;
 
+            //Compruebo que SI puedo pintar la X o la O.
             if((celda.innerHTML === "") && (fichaP1 > 0 || fichaP2 > 0)){
+
+                //Aqui PINTO el simbolo, dependiendo del turno
                 celda.innerHTML = (turno) ? "X" : "O";
 
+                //Después, dependiendo tambien de quien fuese el turno, le quito una ficha
+                //de las que puede poner
                 (turno) ? fichaP1-- : fichaP2--;
 
+
+                //Finalmente, además de que en pantalla quede marcada, guardo la posición 
+                //que ocupa en mi tablero lógico
                 miTablero[celda.id] = (turno) ? "X" : "O";
 
                 comprueboGanador();
